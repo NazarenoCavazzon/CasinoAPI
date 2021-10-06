@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UsersController } from './users/users.controller';
 import { UsersService } from './users/users.service';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -9,7 +7,7 @@ import config from './config/keys';
 
 @Module({
   imports: [UsersModule, MongooseModule.forRoot(config.mongoURI)],
-  controllers: [AppController, UsersController],
-  providers: [AppService],
+  controllers: [UsersController],
+  providers: [],
 })
 export class AppModule {}

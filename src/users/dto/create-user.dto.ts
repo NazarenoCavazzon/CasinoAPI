@@ -21,3 +21,4 @@ export class UpdateUserDto {
     readonly date: Date;
     readonly coins: number;
 }
+

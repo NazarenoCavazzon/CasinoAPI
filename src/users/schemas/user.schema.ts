@@ -35,6 +35,13 @@ export const UserSchema = new mongoose.Schema({
     status: {
         type: Boolean,
         default: false
+    },
+    blackJackCoins: {
+        oneCoins: Number,
+        fiveCoins: Number,
+        twentyFiveCoins: Number,
+        hundredCoins: Number,
+        fiveHundredCoins: Number,
     }
 });
 

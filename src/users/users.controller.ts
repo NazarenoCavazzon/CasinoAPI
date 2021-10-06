@@ -8,10 +8,11 @@ import {
   Param,
 } from '@nestjs/common';
 import { CreateUserDto, UpdateUserDto } from './dto/create-user.dto';
+import { UpdateBJCoinsDto } from './dto/update-bjcoins.dto';
 import { UsersService } from './users.service';
 import { User } from './interfaces/user.interface';
 
-@Controller('users')
+@Controller('api/users')
 export class UsersController {
     constructor(private readonly usersService: UsersService) {}
   @Get()
@@ -35,8 +36,20 @@ export class UsersController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  async update(@Param('id') id: string, @Body() updateUserDto: CreateUserDto) {
     return this.usersService.update(id, updateUserDto);
+  }
+
+  @Put(':id/updateBJCoins')
+  async updateBJCoins(@Param('id') id: string, @Body() updateBJCoinsDto: UpdateBJCoinsDto) {
+    /*let body = {
+      oneCoins: updateBJCoinsDto.oneCoins,
+      fiveCoins: updateBJCoinsDto.fiveCoins,
+      twentyFiveCoins: updateBJCoinsDto.twentyFiveCoins,
+      hundredCoins: updateBJCoinsDto.hundredCoins,
+      fiveHundredCoins: updateBJCoinsDto.fiveHundredCoins,
+    } */
+    return this.usersService.updateBJCoins(id, updateBJCoinsDto);
   }
 
 }

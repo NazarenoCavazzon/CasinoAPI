@@ -9,4 +9,11 @@ export interface User {
     status?: boolean;
     date: Date;
     coins?: number;
+    blackJackCoins?: {
+        oneCoins: number,
+        fiveCoins: number,
+        twentyFiveCoins: number,
+        hundredCoins: number,
+        fiveHundredCoins: number,
+    }
 }

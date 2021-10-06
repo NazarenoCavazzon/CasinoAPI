@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { User } from './interfaces/user.interface';
+import { blackJackCoins } from './interfaces/bjcoins.interface';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
@@ -26,5 +27,9 @@ export class UsersService {
 
     async update(id: string, user: User): Promise<User> {
         return await this.users.findByIdAndUpdate(id, user, { new: true });
+    }
+
+    async updateBJCoins(id: string, bjCoins: blackJackCoins): Promise<User> {
+        return await this.users.findByIdAndUpdate(id, { blackJackCoins: bjCoins }, { new: true });
     }
 }
