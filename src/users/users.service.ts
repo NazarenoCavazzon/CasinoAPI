@@ -19,4 +19,12 @@ export class UsersService {
         const newUser = new this.users(user);
         return await newUser.save();
     }
+
+    async delete(id: string): Promise<User> {
+        return await this.users.findByIdAndRemove(id);
+    }
+
+    async update(id: string, user: User): Promise<User> {
+        return await this.users.findByIdAndUpdate(id, user, { new: true });
+    }
 }

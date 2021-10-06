@@ -7,7 +7,7 @@ import {
   Body,
   Param,
 } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto, UpdateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 import { User } from './interfaces/user.interface';
 
@@ -30,13 +30,13 @@ export class UsersController {
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string): string {
-    return `This action removes a #${id} user`;
+  async delete(@Param('id') id: string): Promise<User> {
+    return this.usersService.delete(id);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: CreateUserDto) {
-    return `This action updates a #${id} user: ${JSON.stringify(updateUserDto)}`;
+  async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.update(id, updateUserDto);
   }
 
 }
